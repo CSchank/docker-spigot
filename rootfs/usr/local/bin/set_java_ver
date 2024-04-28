@@ -92,6 +92,9 @@ function set_java_8 () {
 
 }
 case "$1" in
+  22)
+    set_java_22
+    ;;
   20)
     set_java_20
     ;;
