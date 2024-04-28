@@ -6,6 +6,18 @@
 # (c) 2021 nimmis <kjell.havneskold@gmail.com>
 #
 ###########################################################
+function set_java_22 () {
+  if ! [ -d /usr/lib/jvm/jdk-22* ]; then
+    echo "Downloading JDK 1.22"
+    curl -L https://github.com/adoptium/temurin22-binaries/releases/download/jdk-22%2B36/OpenJDK22U-jdk_x64_linux_hotspot_22_36.tar.gz  | tar xz -C /usr/lib/jvm
+  fi
+
+  echo "set java version to 22"
+  rm -f /usr/lib/jvm/default-jvm
+  ln -s /usr/lib/jvm/jdk-22* /usr/lib/jvm/default-jvm
+
+}
+
 function set_java_20 () {
   if ! [ -d /usr/lib/jvm/jdk-20* ]; then
     echo "Downloading JDK 1.20"

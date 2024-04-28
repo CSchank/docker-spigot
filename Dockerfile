@@ -19,9 +19,9 @@ ENV SPIGOT_HOME=/minecraft \
 ENV DEBIAN_FRONTEND noninteractive
 
 # set default java environment variable
-ENV JAVA_VERSION_MAJOR=20 \
-    JAVA_VERSION_MINOR=0.2 \
-    JAVA_VERSION_UPDATE=9 \
+ENV JAVA_VERSION_MAJOR=22 \
+    JAVA_VERSION_MINOR="" \
+    JAVA_VERSION_UPDATE=36 \
     JAVA_TYPE="" \
     JAVA_OPT=hotspot \
     JAVA_HOME=/usr/lib/jvm/default-jvm \
@@ -61,7 +61,7 @@ RUN apt-get update && \
     mkdir -p /usr/lib/jvm/ && \
 
     # download jdk and unpack in /usr/lib/jvm
-    curl -L https://github.com/adoptium/temurin${JAVA_VERSION_MAJOR}-binaries/releases/download/jdk-${JAVA_VERSION_MAJOR}.${JAVA_VERSION_MINOR}%2B${JAVA_VERSION_UPDATE}/OpenJDK${JAVA_VERSION_MAJOR}U-jdk_x64_linux_${JAVA_OPT}_${JAVA_VERSION_MAJOR}.${JAVA_VERSION_MINOR}_${JAVA_VERSION_UPDATE}.tar.gz | tar xz -C /usr/lib/jvm/ && \
+    curl -L https://github.com/adoptium/temurin${JAVA_VERSION_MAJOR}-binaries/releases/download/jdk-${JAVA_VERSION_MAJOR}${JAVA_VERSION_MINOR}%2B${JAVA_VERSION_UPDATE}/OpenJDK${JAVA_VERSION_MAJOR}U-jdk_x64_linux_${JAVA_OPT}_${JAVA_VERSION_MAJOR}${JAVA_VERSION_MINOR}_${JAVA_VERSION_UPDATE}.tar.gz | tar xz -C /usr/lib/jvm/ && \
 
     # set compatible home path
     ln -s /usr/lib/jvm/jdk-${JAVA_VERSION_MAJOR}.${JAVA_VERSION_MINOR}+${JAVA_VERSION_UPDATE} /usr/lib/jvm/default-jvm && \
